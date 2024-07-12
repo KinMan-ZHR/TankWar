@@ -18,7 +18,7 @@ public class TankEnemy extends TankModel implements Runnable{
         if (!isIcon) {
             setCool(new CoolDownTime(1000));
             if(auto)
-            new Thread(this).start();
+             new Thread(this).start();
         }
     }
     public void setObstacles(Vector<Obstacle> obstacles) {this.obstacles = obstacles;}

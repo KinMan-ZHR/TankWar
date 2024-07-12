@@ -1,42 +1,44 @@
 package TankWar30;
 
 import javax.swing.*;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
 /**
- * å®Œæˆæš‚åœç¨‹åºåå°±åœæ­¢å¼€å‘ã€‚å› ä¸ºå›´å¢™çš„å¤„ç†å¾ˆé‡å¤ï¼ˆæ— æ–°çŸ¥è¯†å­¦ä¹ ï¼‰
- *è®°ä½æœ‰äº›å¯ä»¥åšä½†æ²¡å¿…è¦ï¼Œè°ç»™æˆ‘é’±å‘¢ï¼Ÿ
- * @author è°¨æ¼«ï¼ˆå¼ æµ©ç„¶2021141461113ï¼Œ2022/4/14
- * åŸºäºå¦å…‹å¤§æˆ˜2.7
+ * Íê³ÉÔİÍ£³ÌĞòºó¾ÍÍ£Ö¹¿ª·¢¡£ÒòÎªÎ§Ç½µÄ´¦ÀíºÜÖØ¸´£¨ÎŞĞÂÖªÊ¶Ñ§Ï°£©
+ *¼Ç×¡ÓĞĞ©¿ÉÒÔ×öµ«Ã»±ØÒª£¬Ë­¸øÎÒÇ®ÄØ£¿
+ * @author ½÷Âş£¨ÕÅºÆÈ»2021141461113£¬2022/4/14
+ * »ùÓÚÌ¹¿Ë´óÕ½2.7
  * issuses to be addressed
  * <p>
- *å®ç°å›¾ç‰‡æ–‡ä»¶çš„è¯»å–
- *ç”Ÿæˆexeæ–‡ä»¶ï¼ˆ3.0ï¼‰
+ *ÊµÏÖÍ¼Æ¬ÎÄ¼şµÄ¶ÁÈ¡
+ *Éú³ÉexeÎÄ¼ş£¨3.0£©
  *
  * <p>
- * how to solveï¼ˆor solve whatï¼‰
+ * how to solve£¨or solve what£©
  * <p>
  *
  * <p>
  * bequeath problem
- * æ–‡ä»¶è¯»å–éƒ¨åˆ†ä»£ç ä¸å¤Ÿå¥å…¨ï¼Œè‹¥æ˜¯æœ‰ä¸¤ç§æ˜“ç¢å¢™æˆ‘æ— æ³•å¤„ç†ï¼ˆå…¶å®å¯ä»¥å…ˆå¾ªç¯è®¡æ•°ï¼Œå†å¾ªç¯å­˜å€¼å°±å¯ä»¥äº†ï¼‰
- * å¤šçº¿ç¨‹è¿­ä»£å™¨é—®é¢˜ï¼ˆbullet64è¡Œï¼ŒtankModel251è¡Œï¼‰æ˜“ç¢å¢™çˆ†ç‚¸è¿˜æ˜¯ä¸ç¨³å®š
- *éŸ³ä¹æ— æ³•è¯»å–
+ * ÎÄ¼ş¶ÁÈ¡²¿·Ö´úÂë²»¹»½¡È«£¬ÈôÊÇÓĞÁ½ÖÖÒ×ËéÇ½ÎÒÎŞ·¨´¦Àí£¨ÆäÊµ¿ÉÒÔÏÈÑ­»·¼ÆÊı£¬ÔÙÑ­»·´æÖµ¾Í¿ÉÒÔÁË£©
+ * ¶àÏß³Ìµü´úÆ÷ÎÊÌâ£¨bullet64ĞĞ£¬tankModel251ĞĞ£©Ò×ËéÇ½±¬Õ¨»¹ÊÇ²»ÎÈ¶¨
+ * ÒôÀÖÎŞ·¨¶ÁÈ¡,
+ * ÎÄ¼şĞèÒªÔÚideaÖĞÊ¹ÓÃGBK¼ÓÔØ,²¢ÔÚÔËĞĞÊ±ÒÔ-Dfile.encoding=UTF-8Ö´ĞĞ·½¿É²»»áÂÒÂë£¬¾ÍÊÇ¸Ğ¾õºÜ³¶µ­£¡£¡
  *
  * <p>
  *
- * ï¼ˆåŠŸèƒ½ç±»ï¼‰åœ¨escapeä¸­æ— æ³•å‘å°„å­å¼¹ï¼ˆç°åœ¨é—®é¢˜å¥½äº†å¾ˆå¤šï¼Œå› ä¸ºescapeå·²ç»è„±ç¦»ä¸å®šå¾ªç¯èŒƒç•´ï¼Œå¾ˆå¿«å°±èƒ½é€ƒç¦»ï¼‰
- * ä½†åœ¨é€»è¾‘ä¸Šåº”å½“æˆä¸ºç‹¬ç«‹çº¿ç¨‹ä¸drawTankå¹¶è¡Œ
+ * £¨¹¦ÄÜÀà£©ÔÚescapeÖĞÎŞ·¨·¢Éä×Óµ¯£¨ÏÖÔÚÎÊÌâºÃÁËºÜ¶à£¬ÒòÎªescapeÒÑ¾­ÍÑÀë²»¶¨Ñ­»··¶³ë£¬ºÜ¿ì¾ÍÄÜÌÓÀë£©
+ * µ«ÔÚÂß¼­ÉÏÓ¦µ±³ÉÎª¶ÀÁ¢Ïß³ÌÓëdrawTank²¢ĞĞ
  * <p>
  * ready to do
  * <p>
- * escapeä¸­çš„é€Ÿåº¦å¯ä»¥æ›´æ”¹ï¼Œä¸åŒäºå¹³å¸¸çš„è¡Œè¿›é€Ÿåº¦
+ * escapeÖĞµÄËÙ¶È¿ÉÒÔ¸ü¸Ä£¬²»Í¬ÓÚÆ½³£µÄĞĞ½øËÙ¶È
  * <p>
  */
 public class StartPanel extends JFrame {
-    //ç”¨äºå†³å®šæ˜¯å¦é‡å¼€ç»­ç›˜ä»¥åŠå…³å¡é€‰æ‹©ï¼ˆé‡å¼€éœ€è¯»å–æ–‡ä»¶æ•°æ®ï¼Œåˆ¤æ–­ä¸Šä¸€å±€æ˜¯å“ªä¸€å…³çš„ï¼‰
+    //ÓÃÓÚ¾ö¶¨ÊÇ·ñÖØ¿ªĞøÅÌÒÔ¼°¹Ø¿¨Ñ¡Ôñ£¨ÖØ¿ªĞè¶ÁÈ¡ÎÄ¼şÊı¾İ£¬ÅĞ¶ÏÉÏÒ»¾ÖÊÇÄÄÒ»¹ØµÄ£©
     private String startWay;
     private JComboBox<String> comboBox;
     private JRadioButton buttonRadio1;
@@ -50,89 +52,93 @@ public class StartPanel extends JFrame {
     }
 
     public StartPanel() {
+
         this.setTitle("TankWar");
         this.setSize(600, 375);
         this.setLocationRelativeTo(null);
         startPanel = new JPanel();
+
         startPanel.setBackground(Color.black);
-        startPanel.setLayout(null);//å¯¹é¢æ¿è¿›è¡Œç»å¯¹å¸ƒå±€
-        //æœªå®šä¹‰é¢æ¿å¤§å°å°†è‡ªåŠ¨å……æ»¡æ•´ä¸ªçª—å£
+        startPanel.setLayout(null);//¶ÔÃæ°å½øĞĞ¾ø¶Ô²¼¾Ö
+        //Î´¶¨ÒåÃæ°å´óĞ¡½«×Ô¶¯³äÂúÕû¸ö´°¿Ú
         this.add(startPanel);
         startUI();
         chooseInitial();
         chooseGameMode();
-        //æ„Ÿåº”å…³é—­æ ‡ç­¾é¡µæ—¶çš„åŠ¨ä½œï¼ˆæ‰‹åŠ¨ç‚¹Ã—ï¼‰
+
+        //¸ĞÓ¦¹Ø±Õ±êÇ©Ò³Ê±µÄ¶¯×÷£¨ÊÖ¶¯µã¡Á£©
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+        setUIFont(startPanel, "SimSun");
     }
 
     private void startUI() {
-        //é¢æ¿ç»„ä»¶
-        JLabel information = new JLabel("TankWar  (*^â–½^*)");
+        //Ãæ°å×é¼ş
+        JLabel information = new JLabel("TankWar  (*^¨Œ^*)");
        createNewButton(information,startPanel,200, 10, 250, 100,Color.yellow,24);
-       //é‡å¼€æŒ‰é’®
-        JButton btnNewButton1 = new JButton("é‡å¼€");
+       //ÖØ¿ª°´Å¥
+        JButton btnNewButton1 = new JButton("ÖØ¿ª");
         createNewButton(btnNewButton1,startPanel,200, 250, 80, 30,Color.cyan,16);
-        //å»ç„¦ç‚¹
+        //È¥½¹µã
         btnNewButton1.setFocusPainted(false);
-        //å»è¾¹æ¡†
+        //È¥±ß¿ò
         btnNewButton1.setBorderPainted(false);
         btnNewButton1.addActionListener(listener1);
-        //ç»­ç›˜æŒ‰é’®
-        JButton btnNewButton2 = new JButton("ç»­ç›˜");
+        //ĞøÅÌ°´Å¥
+        JButton btnNewButton2 = new JButton("ĞøÅÌ");
         createNewButton(btnNewButton2,startPanel,320, 250, 80, 30,Color.cyan,16);
-        //å»ç„¦ç‚¹
+        //È¥½¹µã
         btnNewButton2.setFocusPainted(false);
-        //å»è¾¹æ¡†
+        //È¥±ß¿ò
         btnNewButton2.setBorderPainted(false);
         btnNewButton2.addActionListener(listener1);
     }
 
     private void chooseInitial() {
-        //å…³å¡é€‰æ‹©
-        JLabel label1 = new JLabel("å…³å¡ï¼š");//æ–°å»ºæ ‡ç­¾ç»„ä»¶
-        //å¯ä»¥åˆ©ç”¨setBounds
+        //¹Ø¿¨Ñ¡Ôñ
+        JLabel label1 = new JLabel("¹Ø¿¨£º");//ĞÂ½¨±êÇ©×é¼ş
+        //¿ÉÒÔÀûÓÃsetBounds
         createNewButton(label1,startPanel,150, 125, 100, 20,Color.yellow,18);
 
-        //å‡†å¤‡ä¸€ä¸²æ•°ç»„å®šä¹‰ä¸‹æ‹‰åˆ—è¡¨
+        //×¼±¸Ò»´®Êı×é¶¨ÒåÏÂÀ­ÁĞ±í
         String[] counties = {"Hello","1", "2" };
-        comboBox = new JComboBox<>();//æ–°å»ºä¸€ä¸ªä¸‹æ‹‰åˆ—è¡¨ç»„ä»¶
-        for (String county : counties) {//å‘ä¸‹æ‹‰åˆ—è¡¨é€‰é¡¹ä¸­æ·»åŠ ç»„ä»¶
-            comboBox.addItem(county);//æ¯ä¸€ä¸ªå¯¹è±¡æœ‰å…¶å¯¹åº”çš„å€¼
+        comboBox = new JComboBox<>();//ĞÂ½¨Ò»¸öÏÂÀ­ÁĞ±í×é¼ş
+        for (String county : counties) {//ÏòÏÂÀ­ÁĞ±íÑ¡ÏîÖĞÌí¼Ó×é¼ş
+            comboBox.addItem(county);//Ã¿Ò»¸ö¶ÔÏóÓĞÆä¶ÔÓ¦µÄÖµ
         }
-        comboBox.setBounds(230, 120, 150, 30);//è®¾ç½®ä¸‹æ‹‰åˆ—è¡¨ç»„ä»¶çš„ä½ç½®
-        comboBox.setEditable(true);//è®¾ç½®ä¸‹æ‹‰åˆ—è¡¨ç»„ä»¶ä¸ºå¯ç¼–è¾‘
+        comboBox.setBounds(230, 120, 150, 30);//ÉèÖÃÏÂÀ­ÁĞ±í×é¼şµÄÎ»ÖÃ
+        comboBox.setEditable(true);//ÉèÖÃÏÂÀ­ÁĞ±í×é¼şÎª¿É±à¼­
         comboBox.setBackground(Color.yellow);
         comboBox.setForeground(Color.red);
-        startPanel.add(comboBox);//å°†ä¸‹æ‹‰åˆ—è¡¨ç»„ä»¶æ·»åŠ åˆ°é¢æ¿
+        startPanel.add(comboBox);//½«ÏÂÀ­ÁĞ±í×é¼şÌí¼Óµ½Ãæ°å
     }
 
     private void chooseGameMode() {
-        //æ¨¡å¼é€‰æ‹©
-        JLabel label2 = new JLabel("æ¨¡å¼ï¼š");//æ–°å»ºæ ‡ç­¾ç»„ä»¶
-        //å¯ä»¥åˆ©ç”¨setBounds
-        label2.setBounds(150, 200, 80, 20);//è®¾ç½®æ ‡ç­¾ç»„ä»¶ä½ç½®
+        //Ä£Ê½Ñ¡Ôñ
+        JLabel label2 = new JLabel("Ä£Ê½£º");//ĞÂ½¨±êÇ©×é¼ş
+        //¿ÉÒÔÀûÓÃsetBounds
+        label2.setBounds(150, 200, 80, 20);//ÉèÖÃ±êÇ©×é¼şÎ»ÖÃ
         label2.setFont(new Font("Dialog", Font.BOLD, 18));
         label2.setForeground(Color.yellow);
-        startPanel.add(label2);//å°†æ ‡ç­¾ç»„ä»¶æ·»åŠ é¢æ¿ä¸Š
-        //æ¨¡å¼å•é€‰æŒ‰é’®
-        /*åˆ›å»ºå•é€‰æŒ‰é’®ï¼Œå°†å…¶æ”¾åœ¨çª—ä½“ä¸Š*/
-        buttonRadio1=new JRadioButton("æ™®é€šæ¨¡å¼");
+        startPanel.add(label2);//½«±êÇ©×é¼şÌí¼ÓÃæ°åÉÏ
+        //Ä£Ê½µ¥Ñ¡°´Å¥
+        /*´´½¨µ¥Ñ¡°´Å¥£¬½«Æä·ÅÔÚ´°ÌåÉÏ*/
+        buttonRadio1=new JRadioButton("ÆÕÍ¨Ä£Ê½");
         createNewButton(buttonRadio1, startPanel , 220, 200, 100, 25);
-        buttonRadio2 = new JRadioButton("ä¹±æ–—æ¨¡å¼");
+        buttonRadio2 = new JRadioButton("ÂÒ¶·Ä£Ê½");
                 createNewButton(buttonRadio2,startPanel,330, 200, 100, 25);
-        buttonRadio3 = new JRadioButton("åœ°é¼ æ¨¡å¼");
+        buttonRadio3 = new JRadioButton("µØÊóÄ£Ê½");
         createNewButton(buttonRadio3,startPanel,330, 230, 100, 25);
-        buttonRadio4 = new JRadioButton("åœ°å½¢æ¨¡å¼");
+        buttonRadio4 = new JRadioButton("µØĞÎÄ£Ê½");
         createNewButton(buttonRadio4,startPanel,220, 230, 100, 25);
-        buttonRadio1.setSelected(true);//å°†å•é€‰æŒ‰é’®1è®¾ä¸ºé€‰ä¸­çŠ¶æ€
+        buttonRadio1.setSelected(true);//½«µ¥Ñ¡°´Å¥1ÉèÎªÑ¡ÖĞ×´Ì¬
         buttonRadio3.addActionListener(listener2);
         buttonRadio1.addActionListener(listener2);
         buttonRadio2.addActionListener(listener2);
         buttonRadio4.addActionListener(listener2);
     }
-    //æ–¹æ³•é‡è½½ï¼Œåˆ›é€ ä¸€ä¸ªä¸ªæ€§åŒ–çš„æŒ‰é’®
+    //·½·¨ÖØÔØ£¬´´ÔìÒ»¸ö¸öĞÔ»¯µÄ°´Å¥
 private <T extends JComponent> T createNewButton(T t,JPanel jPanel,int x, int y,int width, int height){
        return this.createNewButton(t,jPanel,x,y,width,height,Color.orange,14);
 }
@@ -144,38 +150,56 @@ private <T extends JComponent> T createNewButton(T t,JPanel jPanel,int x, int y,
     jPanel.add(t);
         return t;
 }
-    //æŒ‰ä¸‹ç™»å½•é”®æ—¶åˆ¤æ–­æ˜¯å¦è¾“å…¥å¯¹ä¿¡æ¯
-    //äº‹ä»¶ç›‘å¬ä¿¡æ¯å¹¶åŠ ä»¥å¤„ç†
+    //°´ÏÂµÇÂ¼¼üÊ±ÅĞ¶ÏÊÇ·ñÊäÈë¶ÔĞÅÏ¢
+    //ÊÂ¼ş¼àÌıĞÅÏ¢²¢¼ÓÒÔ´¦Àí
     ActionListener listener1 = actionEvent -> {
-        if (actionEvent.getActionCommand().equals("é‡å¼€")) {
-            //System.out.println("ç”¨æˆ·å: " + user.getText() + "å¯†ç " + pwd.getText());
-            JOptionPane.showMessageDialog(null, "æ–°ä¸€å±€æ¸¸æˆ", "TankWar", JOptionPane.INFORMATION_MESSAGE);
-            //è¿™æ˜¯å¿…é¡»å¾—äº²è‡ªé€‰é‡‡ä¼šè¯»å–ï¼Œå¦åˆ™ä¸ä¼šå˜çš„
+        if (actionEvent.getActionCommand().equals("ÖØ¿ª")) {
+            //System.out.println("ÓÃ»§Ãû: " + user.getText() + "ÃÜÂë" + pwd.getText());
+            JOptionPane.showMessageDialog(null, "ĞÂÒ»¾ÖÓÎÏ·", "TankWar", JOptionPane.INFORMATION_MESSAGE);
+            //ÕâÊÇ±ØĞëµÃÇ××ÔÑ¡²É»á¶ÁÈ¡£¬·ñÔò²»»á±äµÄ
             startWay = Objects.requireNonNull(comboBox.getSelectedItem()).toString();
         }
-        if (actionEvent.getActionCommand().equals("ç»­ç›˜")) {
-            //System.out.println("ç”¨æˆ·å: " + user.getText() + "å¯†ç " + pwd.getText());
-            JOptionPane.showMessageDialog(null, "ä¸Šä¸€å±€æ¸¸æˆ", "TankWar", JOptionPane.INFORMATION_MESSAGE);
+        if (actionEvent.getActionCommand().equals("ĞøÅÌ")) {
+            //System.out.println("ÓÃ»§Ãû: " + user.getText() + "ÃÜÂë" + pwd.getText());
+            JOptionPane.showMessageDialog(null, "ÉÏÒ»¾ÖÓÎÏ·", "TankWar", JOptionPane.INFORMATION_MESSAGE);
             startWay = "R";
         }
         boolean gameMode1 = buttonRadio2.isSelected();
         boolean gameMode2 = buttonRadio3.isSelected();
         boolean gameMode3 = buttonRadio4.isSelected();
-        //è¿™é‡Œä¼šç­‰å¾…ä¸€æ‰‹å¯¹è¯æ¡†ï¼Œå…¶ç»“æŸåæ‰æ‰§è¡Œä¸€ä¸‹ç¨‹åº
+        //ÕâÀï»áµÈ´ıÒ»ÊÖ¶Ô»°¿ò£¬Æä½áÊøºó²ÅÖ´ĞĞÒ»ÏÂ³ÌĞò
         new GameWindow(startWay, gameMode1,gameMode2,gameMode3);
         this.dispose();
     };
     ActionListener listener2=actionEvent->{
-        if(actionEvent.getActionCommand().equals("æ™®é€šæ¨¡å¼")){
+        if(actionEvent.getActionCommand().equals("ÆÕÍ¨Ä£Ê½")){
         if(buttonRadio1.isSelected()){
             buttonRadio2.setSelected(false);
             buttonRadio3.setSelected(false);
             buttonRadio4.setSelected(false);
         }}
-        if(actionEvent.getActionCommand().equals("ä¹±æ–—æ¨¡å¼")||actionEvent.getActionCommand().equals("åœ°é¼ æ¨¡å¼")
-        ||actionEvent.getActionCommand().equals("åœ°å½¢æ¨¡å¼")){
+        if(actionEvent.getActionCommand().equals("ÂÒ¶·Ä£Ê½")||actionEvent.getActionCommand().equals("µØÊóÄ£Ê½")
+        ||actionEvent.getActionCommand().equals("µØĞÎÄ£Ê½")){
         if(buttonRadio2.isSelected()||buttonRadio3.isSelected()||buttonRadio4.isSelected()){
             buttonRadio1.setSelected(false);
         }}
     };
+    public static void setUIFont(Component component, String fontName) {
+        if (component instanceof Container) {
+            Container container = (Container) component;
+            for (Component subComponent : container.getComponents()) {
+                setUIFont(subComponent, fontName);
+            }
+        }
+        if (component instanceof JTextComponent ||
+                component instanceof JButton ||
+                component instanceof JLabel ||
+                component instanceof JList ||
+                component instanceof JComboBox ||
+                component instanceof JTable ||
+                component instanceof JCheckBox ||
+                component instanceof JRadioButton) {
+            component.setFont(new Font(fontName, component.getFont().getStyle(), component.getFont().getSize()));
+        }
+    }
 }
